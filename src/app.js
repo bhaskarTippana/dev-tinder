@@ -7,27 +7,41 @@ const app = express();
 //     res.send("user not found :(")
 // })
 
-app.get("/user",(req,res)=>{
-    res.send({
-        name:"sidhu",
-        age:24
-    })
-})
+// app.get("/abc",(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
 
-app.post("/user",(req,res)=>{
-    res.send("user created successfully :)")
-})
+// app.get(/ab?c/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
 
-app.patch("/user",(req,res)=>{
-    res.send("user updated successfully :)")
-}
-)
+// app.get(/ab+c/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
 
-app.delete("/user",(req,res)=>{
-    res.send("user deleted successfully :)")
-}
-)
+// app.get(/ab*c/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
 
+// app.get(/a(bc)?d/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
+
+// app.get(/a(bc)+d/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
+
+// app.get(/a(bc)*d/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
+
+// app.get(/a/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
+
+// app.get(/.*fly/,(req,res)=>{
+//     res.send("Testing the Api :)")
+// })
 
 
 app.listen(7777,()=>{
