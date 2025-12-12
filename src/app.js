@@ -2,13 +2,33 @@ const express = require("express");
 
 const app = express();
 
-app.use("/",(req,res)=>{
-    res.send("hello world")
+// this is wildcard route 
+// app.use("/user",(req,res)=>{
+//     res.send("user not found :(")
+// })
+
+app.get("/user",(req,res)=>{
+    res.send({
+        name:"sidhu",
+        age:24
+    })
 })
 
-app.use("/hello",(req,res)=>{
-    res.send("hello world 2 :) :) :)")
+app.post("/user",(req,res)=>{
+    res.send("user created successfully :)")
 })
+
+app.patch("/user",(req,res)=>{
+    res.send("user updated successfully :)")
+}
+)
+
+app.delete("/user",(req,res)=>{
+    res.send("user deleted successfully :)")
+}
+)
+
+
 
 app.listen(7777,()=>{
     console.log("server started")
