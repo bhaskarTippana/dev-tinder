@@ -2,18 +2,21 @@ const express = require("express");
 const {adminAuth,userAuth} = require("./middlewares/auth");
 
 const app = express();
-app.use('/admin',adminAuth);
 
-app.get("/user/profile",userAuth,(req,res)=>{
-    res.send("user page");
+app.get("/user",(req,res)=>{
+    try {
+        // res.send("user page");
+        throw new Error();
+    } catch (error) {
+        res.status(401).send("user page not found");
+    }
 })
 
-app.get("/admin/getAllUsers", (req, res) => {
-    res.send("get all users");
-});
-app.delete("/admin/deleteUser", (req, res) => {
-    res.send("delete user");
-});
+app.use("/",(err,req,res,next)=>{
+if(err){
+     res.status(500).send("something went wrong");
+}
+})
 
 app.listen(7777,()=>{
     console.log("server started")
