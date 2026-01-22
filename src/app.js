@@ -1,61 +1,19 @@
 const express = require("express");
+const {adminAuth,userAuth} = require("./middlewares/auth");
 
 const app = express();
+app.use('/admin',adminAuth);
 
-// this is wildcard route 
-// app.use("/user",(req,res)=>{
-//     res.send("user not found :(")
-// })
-
-// app.get("/abc",(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/ab?c/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/ab+c/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/ab*c/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/a(bc)?d/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/a(bc)+d/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/a(bc)*d/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/a/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-// app.get(/.*fly/,(req,res)=>{
-//     res.send("Testing the Api :)")
-// })
-
-
-app.use('/user',(req,res,next)=>{
-    // res.send("user not found :(")
-    next();
-},(req,res,next)=>{
-    // res.send("Testing the Api :)")
-    next();
-},(req,res,next)=>{
-    // res.send("Testing the Api 1 :)")
-    console.log("this is a middleware")
-    next();
-    res.send("Testing the Api 2 :)")
+app.get("/user/profile",userAuth,(req,res)=>{
+    res.send("user page");
 })
+
+app.get("/admin/getAllUsers", (req, res) => {
+    res.send("get all users");
+});
+app.delete("/admin/deleteUser", (req, res) => {
+    res.send("delete user");
+});
 
 app.listen(7777,()=>{
     console.log("server started")
