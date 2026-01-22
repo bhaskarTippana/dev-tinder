@@ -44,6 +44,19 @@ const app = express();
 // })
 
 
+app.use('/user',(req,res,next)=>{
+    // res.send("user not found :(")
+    next();
+},(req,res,next)=>{
+    // res.send("Testing the Api :)")
+    next();
+},(req,res,next)=>{
+    // res.send("Testing the Api 1 :)")
+    console.log("this is a middleware")
+    next();
+    res.send("Testing the Api 2 :)")
+})
+
 app.listen(7777,()=>{
     console.log("server started")
 })
